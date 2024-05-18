@@ -5,7 +5,7 @@ const routerApi = require('./routes')
 const { logErrors, errorHandler, boomHandler } = require('./middlewares/error.handler')
 
 const app = express(); // Create an express app
-const port = 3000; // Set the port to 4000
+const port = process.env.PORT || 3000; // Set the port to 4000
 
 app.use(express.json());
 
@@ -20,11 +20,11 @@ const options = {
   }
 }
 app.use(cors(options));
-app.get('/', (req, res) => { // Handle GET request to the root path of the application
+app.get('/api', (req, res) => { // Handle GET request to the root path of the application
   res.send('Hello World'); // Send 'Hello World' as the response
 });
 
-app.get('/nueva-ruta', (req, res) => { // Handle GET request to the '/nueva-ruta' path
+app.get('/api/nueva-ruta', (req, res) => { // Handle GET request to the '/nueva-ruta' path
   res.send('Nueva Ruta'); // Send 'Nueva Ruta' as the response
 });
 
